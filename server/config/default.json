@@ -1,0 +1,10 @@
+{
+  "env": "dev",
+  "basePath": "/core",
+  "host": "localhost",
+  "listenport": 3650,
+  "publicport": 3650,
+  "ADMIN_LEVEL": 50,
+  "name": "microservice-core",
+  "version": "0.1"
+}

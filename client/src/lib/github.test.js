@@ -20,6 +20,7 @@ test(`get all repositories from ${username} account`, async () => {
   );
 });
 
+
 test(`get last commit from ${username}/${repository}`, async () => {
   expect.assertions(1);
   lastCommit = await getLastCommit(username, repository);

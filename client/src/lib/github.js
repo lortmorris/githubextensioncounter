@@ -1,11 +1,3 @@
-// https://api.github.com/repos/lortmorris/universal-pattern
-// https://api.github.com/repos/lortmorris/universal-pattern/commits
-// get the sha
-// https://api.github.com/repos/lortmorris/universal-pattern/git/trees/7191bb3e528792ed43104fa134c381707d895a60
-
-// get all with `tree` attribute into url property.
-
-
 import Request from './fetch';
 
 export async function getReposByUsername(username) {
@@ -40,20 +32,33 @@ export async function getLastCommit(username, repository) {
   }
 }
 
-async function getDirTreeByStep(tree, path) {
-  // return tree;
-  console.info('getting url: ', path);
-  const files = await Request(path);
-  files.tree.forEach(async (item) => {
+async function getDirTreeByStep(finalFiles = [], url, path = '') {
+  const files = await Request(url);
+
+  const directories = [];
+  if (!files.tree) return true;
+  files.tree.forEach((item) => {
     if (item.type !== 'tree') {
-      tree.push(item);
-    } else {
-      await (tree, item.url);
+      finalFiles.push(`${path}/${item.path}`);
+    }
+
+    const level = path.split('/').length;
+    if (item.type === 'tree' &&  level <= 3) {
+      console.info('item directories: ', item);
+      directories.push(item);
     }
   });
+
+  const tasks = directories.map(async (dir) => {
+    await getDirTreeByStep(finalFiles, dir.url, `${path}/${dir.path}`);
+  });
+
+  if (tasks.length > 0) {
+    return await Promise.all(tasks);
+  }
+
   return true;
 }
-
 
 export async function getDirTreeFromRepo(lastCommit) {
   try {

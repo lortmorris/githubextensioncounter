@@ -1,0 +1,118 @@
+paths:
+  /files:
+    get:
+      tags:
+        - files
+      summary: files list
+      x-swagger-router-controller: universal.search
+      x-swagger-protected: false
+      parameters:
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/sorting'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/fields'
+        - $ref: '#/parameters/coordinates'
+        - $ref: '#/parameters/apikey'
+      responses:
+        '200':
+          description: files list
+          schema:
+            $ref: '#/definitions/files'
+
+    put:
+      tags:
+        - files
+      summary: insert new files
+      x-swagger-router-controller: universal.insert
+      x-swagger-protected: false
+      x-swagger-protected-level: 50
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - name: modeldata
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/filesInsert'
+      responses:
+        '200':
+          description: added files
+          schema:
+            $ref: '#/definitions/files'
+
+    delete:
+      tags:
+        - files
+      summary: delete files
+      x-swagger-router-controller: universal.remove
+      x-swagger-protected: false
+      x-swagger-protected-level: 50
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - name: _id
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: deleted files
+          schema:
+            $ref: '#/definitions/files'
+
+    patch:
+      tags:
+        - files
+      summary: update files
+      x-swagger-router-controller: universal.update
+      x-swagger-protected: false
+      x-swagger-protected-level: 50
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - name: modeldata
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/filesUpdate'
+      responses:
+        '200':
+          description: updated files
+          schema:
+            $ref: '#/definitions/files'
+
+definitions:
+  filesUpdate:
+    type: object
+    properties:
+      _id:
+        type: string
+        format: mongoId
+
+  filesInsert:
+    type: object
+    properties:
+      account:
+        type: string
+        required: true
+      repo:
+        type: string
+        required: true
+      file:
+        type: string
+        required: true
+
+  files:
+    type: object
+    properties:
+      account:
+        type: string
+        required: true
+      repo:
+        type: string
+        required: true
+      file:
+        type: string
+        required: true
+      added:
+        type: string
+      _id:
+        type: string

@@ -1,0 +1,6 @@
+parameters:
+  accesstoken:
+    name: x-access-token
+    in: header
+    required: false
+    type: string

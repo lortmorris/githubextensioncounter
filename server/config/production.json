@@ -1,0 +1,11 @@
+{
+  "basePath": "/core",
+  "env": "production",
+  "host": "api.somedomain.com",
+  "protocol": "https",
+  "listenport": 3650,
+  "publicport": 443,
+  "ADMIN_LEVEL": 50,
+  "name": "microservice-core",
+  "version": "0.1",
+}

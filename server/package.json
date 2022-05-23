@@ -1,0 +1,24 @@
+{
+  "name": "github-extensions-counter",
+  "version": "1.0.0",
+  "description": "Server for hithub-extensions-counter",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "github",
+    "extensions",
+    "counter",
+    "universa-pattern"
+  ],
+  "author": "César Casas",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.7",
+    "cookie-parser": "^1.4.6",
+    "helmet": "^5.1.0",
+    "morgan": "^1.10.0",
+    "universal-pattern": "^1.0.30"
+  }
+}
