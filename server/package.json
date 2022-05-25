@@ -20,5 +20,14 @@
     "helmet": "^5.1.0",
     "morgan": "^1.10.0",
     "universal-pattern": "^1.0.30"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.17.12",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.30.0"
   }
 }

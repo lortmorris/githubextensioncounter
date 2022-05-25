@@ -5,14 +5,14 @@ export async function saveFile(account, repo, file) {
     const inserted = await Request('http://localhost:3650/core/files', {
       method: 'put',
       body: {
-        modeldata: {
-          account,
-          repo,
-          file,
-        }
+        account,
+        repo,
+        file,
       },
       headers: {
         apikey: '-2jdjaksdjad9923--as-d-asd-asd-0-22i2idjiiasd2929--a-sd-as-dm2k2k2a-sdASD22992--asd',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
       }
     });
     return inserted;
@@ -20,6 +20,7 @@ export async function saveFile(account, repo, file) {
     throw new Error(err);
   }
 }
+
 
 export async function getFilesByAccountAndRepo(account, repo) {
   try {

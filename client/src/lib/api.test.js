@@ -23,7 +23,6 @@ test(`get all files from ${username} account, repo ${repository}`, async () => {
   );
 });
 
-
 test(`insert new file into ${username}/${repository}`, async () => {
   lastCommit = await saveFile(username, repository, `${Math.random().toString(32)}.js`);
   expect(lastCommit)
